@@ -3,23 +3,22 @@ package com.company.map;
 import com.company.player.Player;
 
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
 
 /**
- * Created by Pooh on 2014-10-06.
+ * Created by CLogic on 2014. 10. 13..
  */
-public class LadderMap {
-    private int[][] map;
-    private final int height;
-    private final int width;
-    private ArrayList<Player> players;
+public class Map {
 
-    public LadderMap(int playerCount) { // create random laddermap
-        Random random = new Random();
+    protected MapItem[][] map;
+    protected final int height;
+    protected final int width;
+    protected ArrayList<Player> players;
+
+    public Map(int playerCount, int mapHeight) { // create random laddermap
+        //Random random = new Random();
         width = playerCount;
-        height = random.nextInt(100);
-        map = new int[width][height];
+        height = mapHeight;
+        map = new MapItem[width][height];
         players = new ArrayList<Player>();
 
         for(int i=0; i<width; i++) {
@@ -29,26 +28,8 @@ public class LadderMap {
 
         for(int i=0; i<width; i++) {
             for(int j=0; j<height; j++) {
-                map[i][j] = 0;
-            }
-        }
-
-        for(int i=0; i<width; i++) {
-            for(int j=0; j<height; j++) {
-                if((i == width - 1) ||
-                        (j == 0) ||
-                        (j == height - 1)) {
-                    continue;
-                }
-
-                if(map[i][j] != 0) {
-                    continue;
-                }
-
-                if(random.nextInt(3) == 0) { // 1/3확률로 다리를 생성한다.
-                    map[i][j] = 1;
-                    map[i+1][j] = -1;
-                }
+                map[i][j] = new MapItem(0, 0);
+                //map[i][j].initialize();
             }
         }
     }
@@ -78,5 +59,18 @@ public class LadderMap {
             System.out.println("" + (i+1) + "번쨰 플레이어의 위치 : " + players.get(i).getPositionX());
         }
         System.out.println();
+    }
+
+    public void displayMap() {
+        for(int y=0; y<height; y++) {
+            for(int x=0; x<width; x++) {
+                if(map[x][y].getDirection() == MapItem.DIR_DEFAULT ||
+                        map[x][y].getDirection() == MapItem.DIR_RIGHT) {
+                    System.out.print(" ");
+                }
+                System.out.print(" " + map[x][y].getDirection() * map[x][y].getDestinationLocation());
+            }
+            System.out.println();
+        }
     }
 }

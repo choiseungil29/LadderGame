@@ -1,6 +1,7 @@
 package com.company;
 
-import com.company.map.LadderMap;
+import com.company.map.Map;
+import com.company.map.RandomSetMap;
 
 import java.util.Scanner;
 
@@ -9,7 +10,8 @@ import java.util.Scanner;
  */
 public class Game {
 
-    private LadderMap map;
+    //private LadderMap map;
+    private Map map;
     private int playerCount = 0;
 
     public Game() {
@@ -30,8 +32,9 @@ public class Game {
             }
         } while(true);
 
-        map = new LadderMap(playerCount);
+        map = new RandomSetMap(playerCount, 10);
         map.displayPlayersStatus();
+        map.displayMap();
     }
 
     public void update() {
@@ -44,6 +47,4 @@ public class Game {
 
         map.displayPlayersStatus();
     }
-
-
 }
