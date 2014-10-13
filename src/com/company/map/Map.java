@@ -29,7 +29,6 @@ public class Map {
         for(int i=0; i<width; i++) {
             for(int j=0; j<height; j++) {
                 map[i][j] = new MapItem(0, 0);
-                //map[i][j].initialize();
             }
         }
     }
@@ -50,7 +49,7 @@ public class Map {
                 return;
             }
 
-            this.displayPlayersStatus();
+            //this.displayPlayersStatus();
         }
     }
 

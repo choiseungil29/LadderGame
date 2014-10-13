@@ -26,6 +26,15 @@ public class RandomSetMap extends Map {
                 if(random.nextInt(3) == 0) { // 1/3확률로 다리를 생성한다.
                     int location = random.nextInt(height - 2);
 
+                    if(location == 0 ||
+                            location == height - 1) {
+                        continue;
+                    }
+
+                    if(map[i+1][location].getDirection() != MapItem.DIR_DEFAULT) { // 값이 겹치는 예외 처리
+                        continue;
+                    }
+
                     map[i][j].setDestinationLocation(location);
                     map[i+1][location].setDestinationLocation(j);
 

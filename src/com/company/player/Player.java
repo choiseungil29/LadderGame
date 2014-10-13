@@ -36,8 +36,10 @@ public class Player {
             return;
         }
 
-        x += map[x][y].getDirection();
-        y = map[x][y].getDestinationLocation();
+        int originX = x;
+
+        x += map[originX][y].getDirection();
+        y = map[originX][y].getDestinationLocation();
         movedBeforeTurn = true;
     }
 

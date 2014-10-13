@@ -45,9 +45,4 @@ public class MapItem {
     public int getDestinationLocation() {
         return destinationLocation;
     }
-
-    public void initialize() {
-        direction = DIR_DEFAULT;
-        destinationLocation = 0;
-    }
 }
