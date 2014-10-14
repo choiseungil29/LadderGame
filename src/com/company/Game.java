@@ -34,8 +34,8 @@ public class Game {
         do {
             mapStatus = scan.nextInt();
 
-            if(mapStatus != 0 &&
-                    mapStatus != 1) {
+            if(mapStatus != 1 &&
+                    mapStatus != 2) {
                 System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
             } else {
                 break;
@@ -58,6 +58,8 @@ public class Game {
         mapList.add(new DirectSetMap(playerCount, mapHeight));
 
         nowMap = mapList.get(mapStatus - 1);
+
+        nowMap.start();
         nowMap.displayPlayersStatus();
         nowMap.displayMap();
     }

@@ -45,6 +45,11 @@ public class RandomSetMap extends Map {
         }
     }
 
+    public void start() {
+        System.out.println("시작합니다.");
+    }
+
+
     public void update() {
         super.update();
     }

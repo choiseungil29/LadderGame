@@ -26,11 +26,19 @@ public class Map {
             players.add(player);
         }
 
+        reset();
+    }
+
+    protected void reset() {
         for(int i=0; i<width; i++) {
             for(int j=0; j<height; j++) {
                 map[i][j] = new MapItem(0, 0);
             }
         }
+    }
+
+    public void start() {
+
     }
 
     public void update() {
