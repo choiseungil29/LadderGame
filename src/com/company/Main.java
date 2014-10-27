@@ -1,8 +1,6 @@
 package com.company;
 
-import com.company.map.LadderMap;
-
-import java.util.Scanner;
+//import com.company.map.LadderMap;
 
 public class Main {
 

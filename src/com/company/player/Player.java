@@ -1,5 +1,7 @@
 package com.company.player;
 
+import com.company.map.MapItem;
+
 /**
  * Created by Pooh on 2014-10-06.
  */
@@ -16,7 +18,7 @@ public class Player {
         limitY = height;
     }
 
-    public void update(final int[][] map) {
+    public void update(final MapItem[][] map) {
 
         if(y >= limitY - 1) {
             finishMoved = true;
@@ -29,12 +31,15 @@ public class Player {
             return;
         }
 
-        if(map[x][y] == 0) {
+        if(map[x][y].getDirection() == MapItem.DIR_DEFAULT) {
             y++;
             return;
         }
 
-        x += map[x][y];
+        int originX = x;
+
+        x += map[originX][y].getDirection();
+        y = map[originX][y].getDestinationLocation();
         movedBeforeTurn = true;
     }
 
